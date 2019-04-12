@@ -1,8 +1,7 @@
 int rLed = 3;
 int gLed = 5;
 int bLed = 6;
-int cycleTimeMs = 500; // Pulssin sykli
-int halfCycleTimeMs = cycleTimeMs / 2;
+int cycleTimeMs = 500;
 
 void setup()
 {
@@ -12,8 +11,8 @@ void setup()
 
 void loop()
 {
-  long t = millis();
-  boolean isFirstHalf = (t % cycleTimeMs < halfCycleTimeMs);
+  long t = millis() % cycleTimeMs;
+  boolean isFirstHalf = (t < cycleTimeMs / 2);
   digitalWrite(rLed, isFirstHalf);
   digitalWrite(bLed, !isFirstHalf);
 }
